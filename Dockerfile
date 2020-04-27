@@ -7,13 +7,15 @@ ENV ANDROID_BUILD_TOOLS "28.0.3"
 ENV ANDROID_SDK_TOOLS "3859397"
 ENV PATH "$PATH:${ANDROID_HOME}/platform-tools"
 
-RUN apt update && \
-    apt install -y \
+RUN apt-get update && \
+    apt-get install -y \
         git \
         bash \
         curl \
         wget \
-        ruby
+        ruby \
+        ruby-dev \
+        build-essential
 
 RUN gem install fastlane -NV
 
