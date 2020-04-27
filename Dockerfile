@@ -17,18 +17,16 @@ RUN apt-get update && \
         ruby-dev \
         build-essential \
         zip \
-        unzip
-
-RUN gem install fastlane -NV
-RUN curl -s "https://get.sdkman.io" | bash
-RUN source "/root/.sdkman/bin/sdkman-init.sh"
-RUN sdk install java 15.ea.20-open
+        unzip \
+        openjdk-8-jdk
 
 ADD https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip sdk-tools-linux.zip
 
 RUN unzip sdk-tools-linux.zip -d ${ANDROID_HOME} && \
     rm sdk-tools-linux.zip && \
     echo y | ${ANDROID_HOME}/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" "build-tools;${ANDROID_BUILD_TOOLS}"
+
+RUN gem install fastlane -NV
 
 #firebase-tools setup
 ADD https://github.com/firebase/firebase-tools/releases/download/v7.3.1/firebase-tools-linux firebase-tools-linux
