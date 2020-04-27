@@ -15,9 +15,14 @@ RUN apt-get update && \
         wget \
         ruby \
         ruby-dev \
-        build-essential
+        build-essential \
+        zip \
+        unzip
 
 RUN gem install fastlane -NV
+RUN curl -s "https://get.sdkman.io" | bash
+RUN source "/root/.sdkman/bin/sdkman-init.sh"
+RUN sdk install java 15.ea.20-open
 
 ADD https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip sdk-tools-linux.zip
 
