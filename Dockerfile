@@ -6,6 +6,9 @@ ENV ANDROID_COMPILE_SDK "28"
 ENV ANDROID_BUILD_TOOLS "28.0.3"
 ENV ANDROID_SDK_TOOLS "3859397"
 ENV PATH "$PATH:${ANDROID_HOME}/platform-tools"
+ENV LANG "en_US.UTF-8"
+ENV LANGUAGE "en_US.UTF-8"
+ENV LC_ALL "en_US.UTF-8"
 
 RUN apt-get update && \
     apt-get install -y \
